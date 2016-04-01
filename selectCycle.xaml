@@ -1,0 +1,106 @@
+﻿<Window x:Class="WpfApplication1.selectCycle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="Window1"  Closed="Window_Closed"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="#FF184A85" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Image x:Key="red" Source="red-power-button1.bmp"></Image>
+        <Image x:Key="green" Source="green_power_button1.bmp"></Image>
+    </Window.Resources>
+    <Grid>
+        <Button Margin="1148,10,10,578" Click="Button_Click" Name="button_power">
+            <DynamicResource ResourceKey="red"/>
+        </Button>
+        <ComboBox x:Name="comboBox_cycles" IsEditable="True" Text="   --Select Cycle Name--" HorizontalAlignment="Left" Height="59" Margin="351,204,0,0" VerticalAlignment="Top" Width="504" FontSize="42.667" SelectionChanged="comboBox_cycles_SelectionChanged">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF44ECDC" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+
+
+        <Label x:Name="label" Content="Select a Cycle Here" HorizontalAlignment="Left" Margin="172,1,0,0" VerticalAlignment="Top" Width="870" Height="152" Foreground="White" FontSize="96" FontWeight="Bold"/>
+        <DataGrid AutoGenerateColumns="True" 
+          Height="304" 
+          HorizontalAlignment="Left" 
+          Name="dataGrid1" 
+          VerticalAlignment="Top"
+          Width="712" Margin="236,384,0,0" Background="#FF95EFF3" Foreground="#FF06165B" ColumnHeaderHeight="40">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn x:Name="start" FontSize="32" Foreground="#FF111A6E" Header="Starting Temperature"  Width="240"  Binding="{Binding Path=A}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="#FF111A6E"/>
+                            <Setter Property="FontSize" Value="22"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Height" Value="100"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn x:Name="finish" FontSize="32" Foreground="#FF111A6E" Header="Finishing Temperature" Width="250" Binding="{Binding Path=B}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="#FF111A6E"/>
+                            <Setter Property="FontSize" Value="22"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Height" Value="100"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn x:Name="duration" FontSize="32" Foreground="#FF111A6E" Header="Duration" Width="220" Binding="{Binding Path=C}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="#FF111A6E"/>
+                            <Setter Property="FontSize" Value="22"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Height" Value="100"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="label_test" Content=" " HorizontalAlignment="Left" Margin="54,268,0,0" VerticalAlignment="Top" Height="130" Width="674" Foreground="#FFF7EEEE" FontSize="29.333"/>
+        <Button x:Name="button" Content="Add/Update Cycle" HorizontalAlignment="Left" Height="64" Margin="1042,624,0,0" VerticalAlignment="Top" Width="284" Foreground="#FF101A55" FontSize="29.333" FontWeight="Bold" Click="button_Click_1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.057"/>
+                    <GradientStop Color="#FF13B0BF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button_back" Content="Back" HorizontalAlignment="Left" Margin="30,624,0,0" VerticalAlignment="Top" Width="133" Height="64" FontSize="29.333" FontWeight="Bold" Foreground="#FF061363" Click="button1_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.057"/>
+                    <GradientStop Color="#FF13B0BF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

@@ -1,0 +1,6 @@
+﻿Heating Cycle 1
+Heating Cycle 2
+Heating Cycle 3
+Cooling Cycle 1
+Cooling Cycle 2
+Cooling Cycle 3

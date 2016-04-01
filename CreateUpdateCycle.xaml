@@ -1,0 +1,106 @@
+﻿<Window x:Class="WpfApplication1.CreateUpdateCycle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="CreateUpdateCycle" 
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}" 
+        WindowStartupLocation="CenterScreen" Closed="Window_Closed" >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="#FF184A85" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Image x:Key="red" Source="red-power-button1.bmp"></Image>
+        <Image x:Key="green" Source="green_power_button1.bmp"></Image>
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="label" Content="Add/Update Cycles Here" HorizontalAlignment="Left" Margin="172,3,0,0" VerticalAlignment="Top" Width="882" Height="152" Foreground="White" FontSize="96" FontWeight="Bold"/>
+
+        <Button Margin="1148,10,10,578"  Name="button_power" Click="button_power_Click">
+            <DynamicResource ResourceKey="red"/>
+        </Button>
+
+        <ComboBox x:Name="comboBox_cyclesoptions" IsEditable="True" Text="Select Option" HorizontalAlignment="Left" Height="59" Margin="324,196,0,0" VerticalAlignment="Top" Width="218" FontSize="29.333" SelectionChanged="comboBox_cyclesoptions_SelectionChanged" Foreground="#FF101E76" FontWeight="Bold">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF44ECDC" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <ComboBoxItem Name="cbi1">Add</ComboBoxItem>
+            <ComboBoxItem Name="cbi2">Update</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="comboBox_cycles" Text="--Select Cycle Name--" HorizontalAlignment="Left" Height="59" Margin="579,196,0,0" VerticalAlignment="Top" Width="438" FontSize="42.667" SelectionChanged="comboBox_cycles_SelectionChanged_1" IsEditable="True" IsEnabled="False" Foreground="#FF0E1A63">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF44ECDC" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <TextBox x:Name="textBox_enterCycleName" HorizontalAlignment="Left" Height="59" Margin="566,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="543" Background="#FFA9EEEE" Foreground="#FF0E237E" FontSize="32" FontWeight="Bold"/>
+        <Button x:Name="button_save" Content="Save" HorizontalAlignment="Left" Height="64" Margin="1148,603,0,0" VerticalAlignment="Top" Width="182" FontSize="32" FontWeight="Bold" Foreground="#FF112361" Click="button_Click_1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF199388" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="button" Content="Add Row" HorizontalAlignment="Left" Margin="68,603,0,0" VerticalAlignment="Top" Width="256" Height="64" FontSize="32" FontWeight="Bold" Foreground="#FF112361" Click="button_Click_2">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF199388" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="label1" Content="" HorizontalAlignment="Left" Height="54" Margin="350,648,0,0" VerticalAlignment="Top" Width="786" Foreground="#FFF9F2F2" FontSize="29.333"/>
+        <ListView x:Name="listView_table" Opacity="1" HorizontalAlignment="Left" Height="286" Margin="382,296,0,0" VerticalAlignment="Top" Width="727" Background="#FF9CE4EC" FontSize="26.667" FontWeight="Bold" SelectionChanged="listView_table_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Starting Temperature" Width="300" DisplayMemberBinding="{Binding Path=A}">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Foreground" Value="#FF111A6E"/>
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Ending Temperature"  Width="280" DisplayMemberBinding="{Binding Path=B}">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Foreground" Value="#FF111A6E"/>
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Duration"  Width="140" DisplayMemberBinding="{Binding Path=C}">
+                        <GridViewColumn.HeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Foreground" Value="#FF111A6E"/>
+                            </Style>
+                        </GridViewColumn.HeaderContainerStyle>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="textBox_start" Text="{Binding ElementName= listView_table, Path=SelectedItem.A}" HorizontalAlignment="Left" Height="53" Margin="98,312,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="196" Background="#FFDCF9FD" Foreground="#FF101589" FontSize="29.333" FontWeight="Bold"/>
+        <TextBox x:Name="textBox_finish" Text="{Binding ElementName= listView_table, Path=SelectedItem.C}" HorizontalAlignment="Left" Height="53" Margin="98,404,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="196" Background="#FFDCF9FD" Foreground="#FF101589" FontSize="29.333" FontWeight="Bold"/>
+        <TextBox x:Name="textBox_duration" Text="{Binding ElementName= listView_table, Path=SelectedItem.B}" HorizontalAlignment="Left" Height="53" Margin="98,496,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="196" Background="#FFDCF9FD" Foreground="#FF101589" FontSize="29.333" FontWeight="Bold"/>
+        
+
+    </Grid>
+</Window>
